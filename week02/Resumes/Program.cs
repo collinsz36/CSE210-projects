@@ -25,56 +25,48 @@ class Program
 
             string choice = Console.ReadLine();
 
-            switch (choice)
-            {
-                case "1":
-                    
-                    string prompt = generator.GetRandomPrompt();
+        if (choice == "1")
+        {
+            string prompt = generator.GetRandomPrompt();
 
-                    
-                    Console.WriteLine(prompt);
+            Console.WriteLine(prompt);
 
-                    
-                    Console.Write("> ");
-                    string response = Console.ReadLine();
+            Console.Write("> ");
+            string response = Console.ReadLine();
 
-                    
-                    Entry entry = new Entry();
+            Entry entry = new Entry();
 
-                    entry._date = DateTime.Now.ToShortDateString();
-                    entry._promptText = prompt;
-                    entry._entryText = response;
+            entry._date = DateTime.Now.ToShortDateString();
+            entry._promptText = prompt;
+            entry._entryText = response;
 
-                    
-                    journal.AddEntry(entry);
+            journal.AddEntry(entry);
 
-                    Console.WriteLine("Journal entry added!");
-                    break;
-
-                case "2":
-                    journal.DisplayAll();
-                    break;
-
-                case "3":
-                    Console.Write("Enter filename: ");
-                    string loadFile = Console.ReadLine();
-                    journal.LoadFromFile(loadFile);
-                    break;
-
-                case "4":
-                    Console.Write("Enter filename: ");
-                    string saveFile = Console.ReadLine();
-                    journal.SaveToFile(saveFile);
-                    break;
-
-                case "5":
-                    running = false;
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
-            }
+            Console.WriteLine("Journal entry added!");
+        }
+        else if (choice == "2")
+        {
+            journal.DisplayAll();
+        }
+        else if (choice == "3")
+        {
+            Console.Write("Enter filename: ");
+            string loadFile = Console.ReadLine();
+            journal.LoadFromFile(loadFile);
+        }
+        else if (choice == "4")
+        {
+            Console.Write("Enter filename: ");
+            string saveFile = Console.ReadLine();
+            journal.SaveToFile(saveFile);
+        }
+        else if (choice == "5")
+        {
+            running = false;
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice. Please try again.");
         }
     }
 }
