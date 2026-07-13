@@ -7,7 +7,7 @@ public class PromptGenerator
     {
         "What was the best part of my day?",
         "Who was the most interesting person I interacted with today?",
-        "What made me sad today?",
+        "What or whomade me sad today?",
         "What challenge did I overcome today?",
         "What should I have done differently today?"
     };
