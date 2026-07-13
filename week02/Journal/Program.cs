@@ -1,10 +1,12 @@
+// I have added a motivating opening signature statement and a closing reminder feature to the journal.
 using System;
-
+using System.Collections.Generic;
+using System.IO;
 class Program
 {
     static void Main(string[] args)
     {
-        // Create the objects
+        
         Journal journal = new Journal();
         PromptGenerator generator = new PromptGenerator();
 
@@ -23,56 +25,49 @@ class Program
 
             string choice = Console.ReadLine();
 
-            switch (choice)
-            {
-                case "1":
-                    // Get a random prompt
-                    string prompt = generator.GetRandomPrompt();
+        if (choice == "1")
+        {
+            string prompt = generator.GetRandomPrompt();
 
-                    // Display the prompt
-                    Console.WriteLine(prompt);
+            Console.WriteLine(prompt);
 
-                    // Get the user's response
-                    Console.Write("> ");
-                    string response = Console.ReadLine();
+            Console.Write("> ");
+            string response = Console.ReadLine();
 
-                    // Create a new journal entry
-                    Entry entry = new Entry();
+            Entry entry = new Entry();
 
-                    entry._date = DateTime.Now.ToShortDateString();
-                    entry._promptText = prompt;
-                    entry._entryText = response;
+            entry._date = DateTime.Now.ToShortDateString();
+            entry._promptText = prompt;
+            entry._entryText = response;
 
-                    // Add the entry to the journal
-                    journal.AddEntry(entry);
+            journal.AddEntry(entry);
 
-                    Console.WriteLine("Journal entry added!");
-                    break;
-
-                case "2":
-                    journal.DisplayAll();
-                    break;
-
-                case "3":
-                    Console.Write("Enter filename: ");
-                    string loadFile = Console.ReadLine();
-                    journal.LoadFromFile(loadFile);
-                    break;
-
-                case "4":
-                    Console.Write("Enter filename: ");
-                    string saveFile = Console.ReadLine();
-                    journal.SaveToFile(saveFile);
-                    break;
-
-                case "5":
-                    running = false;
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
-            }
+            Console.WriteLine("Journal entry added!");
+        }
+        else if (choice == "2")
+        {
+            journal.DisplayAll();
+        }
+        else if (choice == "3")
+        {
+            Console.Write("Enter filename: ");
+            string loadFile = Console.ReadLine();
+            journal.LoadFromFile(loadFile);
+        }
+        else if (choice == "4")
+        {
+            Console.Write("Enter filename: ");
+            string saveFile = Console.ReadLine();
+            journal.SaveToFile(saveFile);
+        }
+        else if (choice == "5")
+        {
+            running = false;
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice. Please try again.");
+        }
         }
     }
 }
