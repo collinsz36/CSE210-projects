@@ -15,14 +15,26 @@ public class Journal
     {
         _entries.Add(newEntry);
     }
-
-    public void DisplayAll()
+    public void PrintSignature()
     {
-        foreach (Entry entry in _entries)
-        {
-            entry.Display();
-        }
+    Console.WriteLine("========================================");
+    Console.WriteLine("     Collins' Personal Journal");
+    Console.WriteLine("     Keep Writing. Keep Growing.");
+    Console.WriteLine("========================================");
+    Console.WriteLine();
     }
+    public void DisplayAll()
+{
+    PrintSignature();
+
+    foreach (Entry entry in _entries)
+    {
+        entry.Display();
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("Dont forget to pray!");
+}
 
     public void SaveToFile(string file)
     {
@@ -40,8 +52,7 @@ public class Journal
     {
         _entries.Clear();
 
-        
-        
+        StreamReader reader = new StreamReader(file);
 
         while (!reader.EndOfStream)
         {

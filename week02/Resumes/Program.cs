@@ -1,3 +1,4 @@
+// I have added a motivating opening signature statement and a closing reminder feature to the journal.
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -11,12 +11,10 @@ public class PromptGenerator
         "What challenge did I overcome today?",
         "What should I have done differently today?"
     };
-
-    private Random _random = new Random();
+    public Random _random = new Random();
 
     public string GetRandomPrompt()
-    {
-        int index = _random.Next(_prompts.Count);
-        return _prompts[index];
+    { 
+        return _prompts[_random.Next(_prompts.Count)];
     }
 }
