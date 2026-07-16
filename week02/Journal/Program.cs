@@ -1,5 +1,5 @@
 // I have added a search feature which enables user to serch for an entry by mood, entry text or prompt text. 
-//I also have added a motivating opening signature statement and a closing reminder feature to the journal. 
+//I also have added a motivating opening signature statement and a closing reminder feature to the program. 
 using System;
 using System.Collections.Generic;
 using System.IO;
