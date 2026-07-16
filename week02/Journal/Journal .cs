@@ -8,67 +8,81 @@ public class Journal
 
     public Journal()
     {
-        _entries = new List<Entry>();
+    _entries = new List<Entry>();
     }
 
     public void AddEntry(Entry newEntry)
     {
-        _entries.Add(newEntry);
-    }
-    public void PrintSignature()
-    {
-    Console.WriteLine("========================================");
-    Console.WriteLine("     Collins' Personal Journal");
-    Console.WriteLine("     Keep Writing. Keep Growing.");
-    Console.WriteLine("========================================");
-    Console.WriteLine();
+    _entries.Add(newEntry);
     }
     public void DisplayAll()
-{
-    PrintSignature();
-
-    foreach (Entry entry in _entries)
     {
-        entry.Display();
-    }
-
-    Console.WriteLine();
-    Console.WriteLine("Dont forget to pray!");
-}
-
-    public void SaveToFile(string file)
-    {
-        StreamWriter writer = new StreamWriter(file);
+        if (_entries.Count==0)
+            {
+            Console.WriteLine("No journal entries found!");
+            return;
+            }
 
         foreach (Entry entry in _entries)
-        {
-            writer.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
-        }
-
-        writer.Close();
+            {
+            entry.Display();
+            }
     }
-
+    public void SaveToFile(string file)
+    {
+        using (StreamWriter writer = new StreamWriter(file))
+        {
+            foreach (Entry entry in _entries)
+            {
+            writer.WriteLine($"{entry._date}|{entry._mood}|{entry._promptText}|{entry._entryText}");
+            }
+        }
+    }
     public void LoadFromFile(string file)
     {
         _entries.Clear();
 
-        StreamReader reader = new StreamReader(file);
-
-        while (!reader.EndOfStream)
+        using (StreamReader reader = new StreamReader(file))
         {
+            while (!reader.EndOfStream)
+            {
             string line = reader.ReadLine();
-
             string[] parts = line.Split('|');
 
-            Entry entry = new Entry();
+            if (parts.Length == 4)
+            {
+                Entry entry = new Entry();
 
-            entry._date = parts[0];
-            entry._promptText = parts[1];
-            entry._entryText = parts[2];
+                entry._date = parts[0];
+                entry._mood = parts[1];
+                entry._promptText = parts[2];
+                entry._entryText = parts[3];
 
-            _entries.Add(entry);
+                _entries.Add(entry);
+            }
         }
-
-        reader.Close();
     }
 }
+
+    public void SearchEntries(string keyword)
+    {
+        bool found = false;
+
+        foreach (Entry entry in _entries)
+        {
+            if (entry._entryText.ToLower().Contains(keyword.ToLower()) ||
+                entry._promptText.ToLower().Contains(keyword.ToLower()) ||
+                entry._mood.ToLower().Contains(keyword.ToLower()))
+            {
+                entry.Display();
+                found = true;
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("No matching journal entries found.");
+        }
+    }
+}
+    

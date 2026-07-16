@@ -3,12 +3,14 @@ public class Entry
 {
     public string _date;
     public string _promptText;
+     public string _mood;
     public string _entryText;
-    public void Display()
-    
+
+    public void Display()   
 {
     Console.WriteLine($"Date: {_date}");
     Console.WriteLine($"Prompt: {_promptText}");
+    Console.WriteLine($"Mood: {_mood}");
     Console.WriteLine($"Response: {_entryText}");
     Console.WriteLine();
 } 
