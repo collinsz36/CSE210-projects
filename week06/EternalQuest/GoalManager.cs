@@ -117,7 +117,7 @@ public class GoalManager
 
         if (choice < 1 || choice > _goals.Count)
         {
-            Console.WriteLine("Invalid goal number.");
+            Console.WriteLine("Invalid goal number, try again.");
             return;
         }
 
