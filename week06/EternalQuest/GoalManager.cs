@@ -83,13 +83,14 @@ public class GoalManager
             return;
         }
 
-        for (int i = 0; i < _goals.Count; i++)
-        {
-            Goal goal = _goals[i];
-
+        int number = 1;
+        
+        foreach  (Goal goal in _goals)   
+           {
             Console.WriteLine(
-                $"{i + 1}. {goal.GetDetailsString()} {goal.GetName()} - {goal.GetDescription()}"
+                $"{number}. {goal.GetDetailsString()} {goal.GetName()} - {goal.GetDescription()}"
             );
+            number++;
         }
     }
 
@@ -204,13 +205,7 @@ public class GoalManager
                 int points = int.Parse(parts[3]);
                 bool complete = bool.Parse(parts[4]);
 
-                _goals.Add(
-                    new SimpleGoal(
-                        name,
-                        description,
-                        points,
-                        complete
-                    )
+                _goals.Add(new SimpleGoal(name, description, points,complete)
                 );
             }
             else if (goalType == "EternalGoal")
@@ -219,12 +214,7 @@ public class GoalManager
                 string description = parts[2];
                 int points = int.Parse(parts[3]);
 
-                _goals.Add(
-                    new EternalGoal(
-                        name,
-                        description,
-                        points
-                    )
+                _goals.Add(new EternalGoal(name, description, points)
                 );
             }
             else if (goalType == "ChecklistGoal")
@@ -236,15 +226,7 @@ public class GoalManager
                 int target = int.Parse(parts[5]);
                 int bonus = int.Parse(parts[6]);
 
-                _goals.Add(
-                    new ChecklistGoal(
-                        name,
-                        description,
-                        points,
-                        amountCompleted,
-                        target,
-                        bonus
-                    )
+                _goals.Add(new ChecklistGoal(name, description, points, amountCompleted,target, bonus)
                 );
             }
         }
