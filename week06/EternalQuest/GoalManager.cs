@@ -174,12 +174,6 @@ public class GoalManager
 
     public void Load(string filename)
     {
-        if (!File.Exists(filename))
-        {
-            Console.WriteLine("Save file not found.");
-            return;
-        }
-
         string[] lines = File.ReadAllLines(filename);
 
         if (lines.Length == 0)
