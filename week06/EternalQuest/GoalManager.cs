@@ -111,7 +111,7 @@ public class GoalManager
 
         if (!int.TryParse(input, out int choice))
         {
-            Console.WriteLine("Invalid choice.");
+            Console.WriteLine("Invalid choice,try again.");
             return;
         }
 
