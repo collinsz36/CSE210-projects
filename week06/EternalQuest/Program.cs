@@ -13,9 +13,9 @@ class Program
         while (running)
         {
 
+            Console.WriteLine("============");
             Console.WriteLine("Eternal Quest");
-            Console.WriteLine("==============");
-            Console.WriteLine();
+            Console.WriteLine("============");
 
             goalManager.DisplayPlayerInfo();
 
