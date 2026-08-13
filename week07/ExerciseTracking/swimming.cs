@@ -26,7 +26,7 @@ public class Swimming : Activity
     public override string GetSummary()
     {
         return GetDate().ToString("dd MMM yyyy") +
-               "Swimming(" + GetMinutes() + " min)-" +
+               "Swimming (" + GetMinutes() + " min)-" +
                "Distance: " + GetDistance().ToString("0.0") + "km" +
                "Speed: " + GetSpeed().ToString("0.0") + "kph" +
                "Pace: " + GetPace().ToString("0.00") + "min per km";
